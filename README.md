@@ -2,6 +2,10 @@
 
 A full-stack web app for tracking stock investments — records buy/sell transactions, pulls live market prices, and calculates real portfolio metrics (average cost, realized/unrealized gains) rather than just logging trades.
 
+🔗 **Live demo**: [https://portfolio-tracker-flame-nu.vercel.app](https://portfolio-tracker-flame-nu.vercel.app)
+
+📦 **Backend API**: [https://portfolio-tracker-api-ug1a.onrender.com](https://portfolio-tracker-api-ug1a.onrender.com)
+
 ## Why I built this
 
 Built to strengthen my full-stack skills for tech job applications, focusing on real-world engineering concerns like API rate limits and financial calculation correctness, not just CRUD.
@@ -38,6 +42,7 @@ Finnhub API (cached)
 - **Parameterized SQL queries** throughout to prevent SQL injection.
 - **In-memory caching** was chosen over Redis at this scale (single server instance) — Redis would be the natural upgrade path if this needed to scale horizontally across multiple server instances.
 
+> **Note**: The backend is hosted on Render's free tier, which spins down after periods of inactivity. The first request after idle time may take 30-60 seconds to respond while it wakes up.
 ## Running Locally
 
 ### Prerequisites
