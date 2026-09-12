@@ -13,7 +13,7 @@ function App() {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/transactions');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions`);
       const data = await response.json();
       setTransactions(data);
     } catch (err) {
@@ -22,7 +22,7 @@ function App() {
   };
   const fetchPrice = async (ticker) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/price/${ticker}`);
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/price/${ticker}`);
     const data = await response.json();
     setPrices((prev) => ({ ...prev, [ticker]: data.c }));
   } catch (err) {
@@ -45,7 +45,7 @@ useEffect(() => {
     const newTransaction = { ticker, type, quantity, price, date };
 
     try {
-      const response = await fetch('http://localhost:5000/api/transactions', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newTransaction),
@@ -68,7 +68,7 @@ useEffect(() => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/transactions/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/transactions/${id}`, {
         method: 'DELETE',
       });
       fetchTransactions(); // refresh after deleting
